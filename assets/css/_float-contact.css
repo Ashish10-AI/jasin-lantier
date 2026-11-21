@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Floating Contact Button
+   ========================================================================== */
+.float-contact {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.65rem;
+}
+
+/* Toggle button */
+.float-contact__toggle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--primary-navy);
+  border: 3px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(5, 32, 105, 0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+  position: relative;
+  z-index: 2;
+  animation: float-pulse 2.5s ease-in-out infinite;
+}
+
+/* Pulse + gentle float animation */
+@keyframes float-pulse {
+  0%   { transform: translateY(0)   scale(1);    box-shadow: 0 6px 24px rgba(5,32,105,0.4), 0 0 0 0 rgba(197,155,39,0.5); }
+  50%  { transform: translateY(-5px) scale(1.04); box-shadow: 0 12px 30px rgba(5,32,105,0.3), 0 0 0 10px rgba(197,155,39,0); }
+  100% { transform: translateY(0)   scale(1);    box-shadow: 0 6px 24px rgba(5,32,105,0.4), 0 0 0 0 rgba(197,155,39,0); }
+}
+
+.float-contact__toggle:hover {
+  animation: none;
+  transform: scale(1.1);
+  background: var(--accent-gold);
+  color: var(--primary-navy);
+}
+
+/* Stop animation while menu is open */
+.float-contact.is-open .float-contact__toggle {
+  animation: none;
+}
+
+/* Icon swap */
+.float-contact__icon-close { display: none; }
+.float-contact.is-open .float-contact__icon-open  { display: none; }
+.float-contact.is-open .float-contact__icon-close { display: block; }
+
+/* Menu (hidden by default) */
+.float-contact__menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.55rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.float-contact.is-open .float-contact__menu {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Each action row: label + icon button */
+.float-contact__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.float-contact__label {
+  background: #ffffff;
+  color: var(--primary-navy);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.float-contact__item:hover .float-contact__label {
+  background: var(--accent-gold);
+  color: #fff;
+}
+
+.float-contact__btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary-navy);
+  color: var(--accent-gold);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(5, 32, 105, 0.25);
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.float-contact__item:hover .float-contact__btn {
+  background: var(--accent-gold);
+  color: var(--primary-navy);
+}
