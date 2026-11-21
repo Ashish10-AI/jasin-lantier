@@ -1,0 +1,12 @@
+[
+  {
+    "timestamp": "2026-11-04 15:00:00",
+    "name": "Sample Inquiry",
+    "email": "info@example.com",
+    "phone": "833-288-4762",
+    "service": "Low Cost BCBA Supervision",
+    "message": "Welcome to Jason Lantier's interactive PHP platform. Inquiries submitted through the Contact form will be recorded here.",
+    "ip": "127.0.0.1"
+  }
+]
+
