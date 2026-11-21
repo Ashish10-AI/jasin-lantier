@@ -1,0 +1,16 @@
+# Jason Lantier Portfolio - Apache Configuration
+RewriteEngine On
+RewriteBase /
+
+# Force trailing slash removal if not a folder
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# Route clean URLs to .php files if they exist
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Custom Error Pages if needed
+ErrorDocument 404 /index.php
+
